@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">theWeather</span>
+</nav>
+<body>
+  <br>
+  <div class="container">
+	<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-8">
+      <form class="card card-sm">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="fas fa-search h4 text-body"></i>
+              </div>
+                <div class="col">
+                  <input class="form-control form-control-lg form-control-borderless" type="text" placeholder="Search City" name="city" [(ngModel)]="city">
+                </div>
+              <div class="col-auto">
+            <button class="btn btn-lg btn-success" type="submit"(click)="search()" >Search</button>
+           </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="card weather" *ngIf="response">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> city : {{ response.name }}</li>
+    <li class="list-group-item"> Country: {{response.sys.country }} </li>
+    <li class="list-group-item">weather : {{ response.weather[0].description }} </li>
+    <li class="list-group-item"> Current Temperature: {{response.main.temp }}</li>
+    <li class="list-group-item"> Wind Speed: {{response.wind.speed }}  </li>
+  </ul>
+</div>
+<div class="card weather" *ngIf="hasError" >
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> Oops : {{ error.error.message }}</li>
+    <li class="list-group-item"> error: {{error.error.cod }} </li>
+  </ul>
+</div>
+</body>
+
